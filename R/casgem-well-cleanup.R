@@ -2,9 +2,15 @@ library(readr)
 library(dplyr)
 library(lubridate)
 
+# Constants ------
+# groundwater data from casgem
+gwl_update_filepath <- "raw-data/gwl_file.csv" 
+# well station data from casgem
+gst_update_filepath <- "raw-data/gst_file.csv" 
+
 # data imports ----
-gwl <- read_csv("raw-data/gwl_file.csv") # a big file
-gst <- read_csv("raw-data/gst_file.csv")
+gwl <- read_csv(gwl_update_filepath) 
+gst <- read_csv(gst_update_filepath)
 
 
 # Add a derived wse variable defined by 
@@ -19,8 +25,7 @@ gwl_with_wse <- gwl %>%
 gwl_with_wse$MEASUREMENT_DATE <- lubridate::mdy_hms(gwl_with_wse$MEASUREMENT_DATE) 
 
 
-# write data to csv and rds
-
+# Save Locally --------------------------------
 write_csv(gwl_with_wse, "data/casgem_groundwater_data_as_of_03-2017.csv")
 write_rds(gwl_with_wse, "data/casgem_groundwater_data_as_of_03-2017.rds")
 
@@ -39,8 +44,22 @@ Sys.setenv("AWS_ACCESS_KEY_ID" = "",
            "AWS_SECRET_ACCESS_KEY" = "",
            "AWS_DEFAULT_REGION" = "us-west-2")
 
-# or if aws cli was installed ~/.aws holds these credentials
-aws.signature::use_credentials()
+save_to_S3 <- function() {
 
-# save full rds to bucket: casgem-well-data
-s3saveRDS(gwl_with_wse, bucket = "casgem-well-data", object = "casgem-well-data-2017.rds")
+    aws.signature::use_credentials()
+  
+  if (Sys.getenv("AWS_ACCESS_KEY_ID") == "")
+    stop("aws credentials not set")
+  
+  # save full rds to bucket: casgem-well-data
+  put_object("data/casgem_groundwater_data_as_of_03-2017.csv", 
+             bucket = "casgem-well-data", 
+             object = paste0("casgem-well-data", today(), ".csv"))
+  
+  put_object("raw-data/gst_file.csv", 
+             bucket = "casgem-well-data", 
+             object = paste0("casgem-station-data", today(), ".csv"))
+}
+
+#save_to_s3() # push casgem data to s3
+
