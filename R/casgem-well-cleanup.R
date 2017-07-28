@@ -45,8 +45,8 @@ Sys.setenv("AWS_ACCESS_KEY_ID" = "",
            "AWS_DEFAULT_REGION" = "us-west-2")
 
 save_to_S3 <- function() {
-
-    aws.signature::use_credentials()
+  
+  aws.signature::use_credentials()
   
   if (Sys.getenv("AWS_ACCESS_KEY_ID") == "")
     stop("aws credentials not set")
