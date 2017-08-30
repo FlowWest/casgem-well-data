@@ -15,7 +15,7 @@ get_casgem_data("station_metadata")
 This will download the zip file temporarily (deletes it once complete) and extracts
 this file from within in into the working directory. 
 
-In order to no break workflow, this function is assigned to a variable will return 
+In order to no break workflow, this function when assigned to a variable (or passed in to as a parameter to another function) will return 
 the path to the downloaded file, thus allowing you to read into memory as follows:
 
 ```r
