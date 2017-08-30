@@ -3,7 +3,7 @@
 
 *metadata provided for CASGEM from California Department of Water Resources* 
 
-The export you requested contains 3 files with a naming convention corresponding to the following data type:
+<pre>The export you requested contains 3 files with a naming convention corresponding to the following data type:
 GST - station (well) header data
 GWL - groundwater level data
 PERF - well perforation details 
@@ -107,4 +107,4 @@ If you encounter problems, find any errors, or have any suggestions,
 please contact the WDL site administrator at wdlweb@water.ca.gov
 Last updated 09/20/2016
 *******************************************************************************
-
+</pre>
