@@ -1,3 +1,20 @@
+# Usage 
+
+These are a set of R scripts to be used interactively for CASGEM well data retrieval. 
+The workflow is pretty simple, and starts with the `retrieve-data.R` file. This script
+defines a function `get_casgem_data()` that allows the user to download a desired 
+dataset provided by DWR. 
+
+If you wish to use the script to download the raw file you can do by running: 
+
+```r
+# download the casgem stations data
+get_casgem_data("station_metadata")
+```
+
+This will download the zip file temporarily (deletes it once complete) and extracts
+this file from within in into the working directory. 
+
 
 # Archive Metadata 
 
