@@ -44,6 +44,14 @@ $ COMPLETION_RPT_NBR      <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
 $ CASGEM_STATION_USE_DESC <chr> "Residential", "Residential", "Unknown", "Unknown", "Unknown", "Unkno...
 ```
 
+The "cleanup" or wrangling of this data is very project specific, thus not much work was put 
+into implementing these features. Moreover to add value to the metadata provided from the 
+source, there is no attempt in altering more than what was provided. I highly recommend 
+going over definitions of data attributes below. 
+
+For use with shiny apps, and other bandwidth limited resource, there are metadata "like" 
+features in the ground water observations data that can be moved to a metadata dataframe, 
+and thus shrinking the size of the curreny ~200mb file. 
 
 # Archive Metadata 
 
