@@ -2,11 +2,6 @@ library(readr)
 library(dplyr)
 library(lubridate)
 
-# Constants ------
-# groundwater data from casgem
-gwl_update_filepath <- "raw-data/gwl_file.csv" 
-# well station data from casgem
-gst_update_filepath <- "raw-data/gst_file.csv" 
 
 # data imports ----
 gwl <- read_csv(gwl_update_filepath) 

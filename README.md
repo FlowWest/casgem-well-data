@@ -1,3 +1,8 @@
+
+# Archive Metadata 
+
+*metadata provided for CASGEM from California Department of Water Resources* 
+
 The export you requested contains 3 files with a naming convention corresponding to the following data type:
 GST - station (well) header data
 GWL - groundwater level data
